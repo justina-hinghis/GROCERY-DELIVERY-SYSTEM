@@ -1,0 +1,83 @@
+<!-- payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+  <div class="container">
+    <div class="cart">
+      <h3>Your Cart</h3>
+      <div id="cart-items"></div>
+      <h4>Total: ₹<span id="total">0</span></h4>
+    </div>
+
+    <div class="payment">
+      <h3>Payment Details</h3>
+      <input type="text" id="phone" placeholder="Phone Number" style="width:100%; padding:10px;" />
+      <button class="pay-btn" onclick="payNow()">Pay Now</button>
+    </div>
+  </div>
+
+  <footer style="
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to right, #4CAF50, #6B4423); 
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  z-index: 100;
+">
+  &copy; 2025 Grocery Store. All rights reserved.
+</footer>
+
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartItemsDiv = document.getElementById("cart-items");
+    const totalSpan = document.getElementById("total");
+
+    function renderCart() {
+      cartItemsDiv.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "item";
+        itemDiv.innerHTML = `
+          <span>${item.name} - ₹${item.price}</span>
+          <button onclick="removeItem(${index})">Remove</button>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+      });
+      totalSpan.innerText = total;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function payNow() {
+      const phone = document.getElementById("phone").value;
+      if (!phone || phone.length < 10) {
+        alert("Please enter a valid phone number.");
+        return;
+      }
+      alert("Payment successful!");
+      localStorage.removeItem("cart");
+      window.location.href = "success.html";
+    }
+
+    renderCart();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logout</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #4CAF50, #6B4423);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .logout-container {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .logout-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .logout-container button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .logout-container button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logout-container">
+    <h2>Are you sure you want to logout?</h2>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    function logout() {
+      // Clear any session/local data if needed
+      localStorage.clear();
+      sessionStorage.clear();
+      // Redirect to login page
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

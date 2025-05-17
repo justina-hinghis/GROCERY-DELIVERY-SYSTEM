@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grocery Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header>
+    <div class="menu-icon" onclick="openNav()">&#9776;</div>
+    <h1>WELCOME TO ZEST BASKET 🛒</h1>
+    <div class="profile-icon" onclick="openProfile()">👤</div>
+  </header>
+
+  <!-- 🛒 Search Box -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <input type="text" id="searchInput" placeholder="Search for products..." style="padding: 10px; width: 250px; border-radius: 5px; border: 1px solid #ccc;">
+    <button onclick="searchProducts()" style="padding: 10px 15px; margin-left: 5px;">Search</button>
+  </div>
+
+  <!-- 🛒 Category Filter -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <label for="categorySelect">Filter by Category:</label>
+    <select id="categorySelect" onchange="filterByCategory()" style="padding: 10px; width: 200px; border-radius: 5px; border: 1px solid #ccc;">
+      <option value="All">All</option>
+      <option value="Fruits">Fruits</option>
+      <option value="Vegetables">Vegetables</option>
+      <option value="Grains">Grains</option>
+      <option value="Bakery">Bakery</option>
+      <option value="Meat">Meat</option>
+      <option value="Dairy">Dairy</option>
+      <option value="Baking">Baking</option>
+      <option value="Greens">Greens</option>
+      <option value="Snacks">Snacks</option>
+      <option value="Beverages">Beverages</option>
+      <option value="Spices">Spices</option>
+      <option value="Condiments">Condiments</option>
+    </select>
+  </div>
+
+  <!-- 🛒 Product List -->
+  <div class="product-grid" id="product-list"></div>
+
+  <!-- 🛒 Left Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="logout.html">Logout</a>
+  </div>
+
+  <!-- 🛒 Right Profile Sidebar -->
+  <div id="profileSidebar" class="profile-sidebar">
+    <span class="closebtn" onclick="closeProfile()">&times;</span>
+    <h3>User Profile</h3>
+    <p><strong>Email:</strong> user@example.com</p>
+  </div>
+
+  <a href="payment.html"><button style="margin-top: 20px;">Go to Payment</button></a>
+
+  <!-- 🛒 JavaScript -->
+  <script>
+    const products = [
+      { name: "Apple", price: 40, img: "apple.jpg", category: "Fruits" },
+      { name: "Grapes", price: 60, img: "grapes.jpg", category: "Fruits" },
+      { name: "Banana", price: 30, img: "banana.jpg", category: "Fruits" },
+      { name: "Strawberry", price: 100, img: "strawberry.jpg", category: "Fruits" },
+      { name: "Avocado", price: 120, img: "avocado.jpg", category: "Fruits" },
+      { name: "Garlic", price: 25, img: "garlic.jpg", category: "Vegetables" },
+      { name: "Lemons", price: 20, img: "lemon.jpg", category: "Fruits" },
+      { name: "Onions", price: 30, img: "onion.jpg", category: "Vegetables" },
+      { name: "Potatoes", price: 35, img: "potato.jpg", category: "Vegetables" },
+      { name: "Tomatoes", price: 25, img: "tomato.jpg", category: "Vegetables" },
+      { name: "Pasta", price: 80, img: "pasta.jpg", category: "Grains" },
+      { name: "Rice", price: 60, img: "rice.jpg", category: "Grains" },
+      { name: "Bread", price: 40, img: "bread.jpg", category: "Bakery" },
+      { name: "Chicken", price: 150, img: "chicken.jpg", category: "Meat" },
+      { name: "Eggs", price: 70, img: "egg.jpg", category: "Dairy" },
+      { name: "Baking Soda", price: 40, img: "bakingsoda.jpg", category: "Baking" },
+      { name: "Sugar", price: 45, img: "sugar.jpg", category: "Baking" },
+      { name: "Honey", price: 90, img: "honey.jpg", category: "Baking" },
+      { name: "Chocolate", price: 60, img: "chocolate.jpg", category: "Snacks" },
+      { name: "Coca-Cola", price: 35, img: "coaco.jpg", category: "Beverages" },
+      { name: "Black Pepper", price: 70, img: "blackpepper.jpg", category: "Spices" },
+      { name: "Chilli Powder", price: 55, img: "chillipowder.jpg", category: "Spices" },
+      { name: "Chilli Sauce", price: 50, img: "redsauce.jpg", category: "Condiments" },
+      { name: "Ketchup", price: 30, img: "ketchup.jpg", category: "Condiments" },
+      { name: "Mustard", price: 45, img: "mustard.jpg", category: "Condiments" },
+      { name: "Butter", price: 50, img: "butter.jpeg", category: "Dairy" },
+      { name: "Curd", price: 35, img: "curd.jpeg", category: "Dairy" },
+      { name: "Salt", price: 45, img: "salt.jpg", category: "Spices" },
+      { name: "Drumstick leaves", price: 30, img: "Drumstick leaves.jpg", category: "Greens" },
+      { name: "Manathakkaali keerai", price: 40, img: "Manathakkaali keerai.jpg", category: "Greens" },
+      { name: "Siru keerai", price: 25, img: "Siru keerai.jpg", category: "Greens" },
+      { name: "Ara keerai", price: 25, img: "Ara keerai.jpg", category: "Greens" },
+      { name: "Mudakkathaan keerai", price: 45, img: "Mudakkathaan keerai.jpg", category: "Greens" },
+      { name: "Gongura pulicha keerai", price: 40, img: "Gongura pulicha keerai.jpg", category: "Greens" },
+      { name: "Sapotta", price: 80, img: "Sapotta.jpg", category: "Fruits" },
+      { name: "Guava", price: 60, img: "Guava.jpg", category: "Fruits" },
+      { name: "Pomogranate", price: 250, img: "Pomogranate.jpg", category: "Fruits" },
+      { name: "Star fruit", price: 100, img: "star fruit.jpg", category: "Fruits" },
+    ];
+
+    const productList = document.getElementById("product-list");
+
+    function displayProducts(list) {
+      productList.innerHTML = "";
+      list.forEach(product => {
+        const item = document.createElement("div");
+        item.className = "product";
+        item.innerHTML = `
+          <img src="images/${product.img}" alt="${product.name}" />
+          <h4>${product.name}</h4>
+          <p>₹${product.price}</p>
+          <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+        `;
+        productList.appendChild(item);
+      });
+
+      if (list.length === 0) {
+        productList.innerHTML = `<p style="text-align: center; color: red;">No products found</p>`;
+      }
+    }
+
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ name, price });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${name} added to cart!`);
+    }
+
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "200px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+
+    function openProfile() {
+      document.getElementById("profileSidebar").style.width = "250px";
+    }
+
+    function closeProfile() {
+      document.getElementById("profileSidebar").style.width = "0";
+    }
+
+    function searchProducts() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(input));
+      displayProducts(filtered);
+    }
+
+    function filterByCategory() {
+      const selected = document.getElementById("categorySelect").value;
+      if (selected === "All") {
+        displayProducts(products);
+      } else {
+        const filtered = products.filter(p => p.category === selected);
+        displayProducts(filtered);
+      }
+    }
+
+    // Initial load
+    displayProducts(products);
+  </script>
+
+  <footer>
+    &copy; 2025 Grocery Store. All rights reserved.
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #6fce94, #f4d35e);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+  background: linear-gradient(135deg, #2e8b57, #3e5b3d);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+/* Common Button Styling */
+button, a.button-link {
+  background: linear-gradient(135deg, #3e5b3d, #2e8b57);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+button:hover, a.button-link:hover {
+  background: #2e8b57;
+}
+
+/* Login Page */
+body.login-body {
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  width: 800px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.login-image {
+  flex: 1;
+}
+
+.login-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-form {
+  flex: 1;
+  padding: 40px;
+  background: #fffbe6;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #4CAF50;
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #8B4513;
+  border-radius: 8px;
+}
+
+.login-form button {
+  background: #4CAF50;
+}
+
+.login-form button:hover {
+  background: #388E3C;
+}
+
+.login-form a {
+  color: #8B4513;
+  text-decoration: none;
+}
+
+/* Home Page */
+h2 {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 2em;
+  color: #3c763d;
+}
+
+.main-container {
+  display: flex;
+}
+
+.category-sidebar {
+  width: 220px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  height: 100vh;
+}
+
+.category-sidebar ul {
+  list-style: none;
+}
+
+.category-sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+.category-sidebar ul li:hover {
+  background-color: #ddd;
+}
+
+.category-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.product-area {
+  flex: 1;
+  padding: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.product:hover {
+  transform: scale(1.05);
+}
+
+.product img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product h4 {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.product p {
+  font-size: 1.1em;
+  color: #777;
+}
+
+.product button {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  border: none;
+  padding: 8px 12px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.product button:hover {
+  background-color: #ff7e5f;
+}
+
+/* Sidebar (Menu and Profile) */
+.sidebar, .profile-sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  background-color: #148d3c;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar {
+  left: 0;
+}
+
+.profile-sidebar {
+  right: 0;
+}
+
+.sidebar a, .profile-sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover, .profile-sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #fff;
+}
+
+/* Success Page */
+.success-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.success-container h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #2e7d32;
+}
+
+.success-container p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.success-container a {
+  background-color: #2e7d32;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: 0.3s;
+  text-decoration: none;
+  color: white;
+}
+
+.success-container a:hover {
+  background-color: #1b5e20;
+}
+
+/* Payment Page */
+.container {
+  display: flex;
+  padding: 20px;
+  flex: 1;
+  gap: 20px;
+}
+
+.cart, .payment {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.item button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.pay-btn {
+  background: green;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.pay-btn:hover {
+  background-color: darkgreen;
+}
+
+/* Cart Specific */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f7f7;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remove-btn:hover {
+  background-color: #e60000;
+}
+
+/* Footer */
+.footer, footer {
+  background-color: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 100px;
+}

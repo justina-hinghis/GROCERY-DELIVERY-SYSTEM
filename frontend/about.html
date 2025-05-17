@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About - Grocery Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding-bottom: 60px;
+      background: linear-gradient(to right, #4CAF50, #6B4423);
+    }
+
+    header {
+  background: linear-gradient(135deg, #2e8b57, #3e5b3d); /* Green to dark brown gradient */
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+    header h1 {
+      margin: 0;
+   
+    }
+
+    .menu-icon, .profile-icon {
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #6B4423;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 999;
+    }
+
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #4CAF50;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .content {
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="menu-icon" onclick="openNav()">&#9776;</div>
+    <h1>About Us</h1>
+    <div class="profile-icon" onclick="openProfile()">👤</div>
+  </header>
+
+  <!-- Left Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeNav()">&times;</span>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="logout.html">Logout</a>
+  </div>
+
+  <!-- Main About Content -->
+  <div class="content">
+    <h2>Welcome to Grocery Store</h2>
+    <p>
+      We are your one-stop shop for all daily essentials—fruits, vegetables, dairy, spices, and more. 
+      Our goal is to deliver fresh, high-quality products at your doorstep, saving your time and making grocery shopping convenient and stress-free.
+    </p>
+    <p>
+      At Grocery Store, we value customer satisfaction, hygiene, and timely delivery. With easy payment options and a simple user interface, we ensure you get what you need, when you need it.
+    </p>
+  </div>
+
+  
+  <footer style="
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to right, #4CAF50, #6B4423); 
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  z-index: 100;
+">
+  &copy; 2025 Grocery Store. All rights reserved.
+</footer>
+
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "200px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+
+    function openProfile() {
+      alert("Profile sidebar can be implemented here.");
+    }
+  </script>
+</body>
+</html>
